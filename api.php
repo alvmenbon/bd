@@ -39,7 +39,7 @@ $carYears = array_unique(array_column($resultados, 'year'));
 
 
 
-var_dump($resultados);
+//var_dump($resultados);
 
 
 /*var_dump($carIds);
