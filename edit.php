@@ -41,6 +41,7 @@ if (isset($_POST['update'])){
 ?>
 
 <?php include("includes/header.php") ?>
+<?php include("api.php") ?>
 
 <div class="container p-4">
    <div class="row">
@@ -87,4 +88,5 @@ if (isset($_POST['update'])){
    </div> 
 </div>
 
+<?php include("script.php") ?>
 <?php include("includes/footer.php") ?> 
