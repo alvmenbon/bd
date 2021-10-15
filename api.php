@@ -28,6 +28,24 @@ if ($err) {
 	//echo $response;
 //}
 
-$resultado = json_decode($response, true);
-var_dump($resultado);
+
+$resultados = json_decode($response, true);
+$carIds = array_unique(array_column($resultados, 'id'));
+$carMakes = array_unique(array_column($resultados, 'make'));
+$carModels = array_unique(array_column($resultados, 'model'));
+$carTypes = array_unique(array_column($resultados, 'type'));
+$carYears = array_unique(array_column($resultados, 'year'));
+
+
+
+
+
+
+var_dump($carIds);
+var_dump($carMakes);
+var_dump($carModels);
+var_dump($carTypes);
+var_dump($carYears);
+
+
 ?>
