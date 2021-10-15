@@ -49,64 +49,6 @@
 </div>
 
 
-<script type="application/javascript">
-    const models = Array();
-    <?php
-    foreach($carIds as $carId) {
-        $models = array_values(array_filter($resultados, function($row) use ($carId) {
-            return $row['id'] === $carId;
-        } ));
-        ?>
-    models[<?php echo $carId;?>] = [ <?php
-        for ($i = 0; $i < count($models) - 1; $i++ ) {
-            ?>{ id: <?php echo $models[$i]['id']; ?>, name: "<?php echo $models[$i]['model']; ?>" }, <?php
-        }
-        ?>{ id: <?php echo $models[$i]['id']; ?>, name: "<?php echo $models[$i]['model']; ?>" } ];
-    <?php
-    }
-    ?>
-    
-    const types = Array();
-    <?php
-    foreach($carIds as $carId) {
-        $types = array_values(array_filter($resultados, function($row) use ($carId) {
-            return $row['id'] === $carId;
-        } ));
-        ?>
-    types[<?php echo $carId;?>] = [ <?php
-        for ($i = 0; $i < count($types) - 1; $i++ ) {
-            ?>{ id: <?php echo $types[$i]['id']; ?>, name: "<?php echo $types[$i]['model']; ?>" }, <?php
-        }
-        ?>{ id: <?php echo $types[$i]['id']; ?>, name: "<?php echo $types[$i]['model']; ?>" } ];
-    <?php
-    }
-    ?>
+<?php include("script.php")?>
+<?php include("includes/footer.php")?>
 
-    document.getElementById('marca').addEventListener('change', function(e) {
-        let ownModels = models[e.target.value];
-
-        let modelDropdown = document.getElementById('modelo');
-        modelDropdown.innerText = null;
-
-        ownModels.forEach( function(c) {
-            var option = document.createElement('option');
-            option.text = c.name;
-            option.value = c.id;
-            modelDropdown.appendChild(option);
-        } )
-    });
-    document.getElementById('modelo').addEventListener('change', function(e) {
-        let ownTypes = types[e.target.value];
-
-        let typeDropdown = document.getElementById('type');
-        typeDropdown.innerText = null;
-
-        ownTypes.forEach( function(c) {
-            var option = document.createElement('option');
-            option.text = c.name;
-            option.value = c.id;
-            typeDropdown.appendChild(option);
-        } )
-    });
-    
-</script>
